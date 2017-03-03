@@ -2,36 +2,28 @@ package com.marist.mscs721;
 
 
 import java.io.FileWriter;
+import org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class RoomScheduler {
-	protected static Scanner keyboard = new Scanner(System.in);
-	private static int count = 0;
-
-	private RoomScheduler() {
-		mainMenu();
-	}
+	protected static final Scanner keyboard = new Scanner(System.in);
 	
-	public static void main(String[] args) {
-		Gson gson = new Gson();
-		RoomScheduler r = new RoomScheduler();
-		Boolean end = false;
-		System.out.println(gson.toJson(r));
-		
-		ArrayList<Room> rooms = new ArrayList<>();
+	public static void main(String[] args) throws IOException {
+		Boolean end = false;		
+		ArrayList<Room> rooms = new ArrayList<Room>();
 
 		while (!end) {
 			switch (mainMenu()) {
 
 			case 1:
-				System.out.println(r.addRoom(rooms));
-				System.out.println(gson.toJson(r));
+				System.out.println(addRoom(rooms));
 				break;
 			case 2:
 				System.out.println(removeRoom(rooms));
@@ -56,11 +48,11 @@ public class RoomScheduler {
             default:
                 System.out.println("Invalid Selection! Try again.");
                 break;
-           }
+           		}
 
 		}
 	}
-
+	//lists all the schedules
 	protected static String listSchedule(ArrayList<Room> roomList) {
 		String roomName = getRoomName();
 		System.out.println(roomName + " Schedule");
@@ -72,8 +64,8 @@ public class RoomScheduler {
 
 		return "";
 	}
-	
-	protected static int mainMenu() {
+	//console which shows the options
+	public static int mainMenu() {
 		System.out.println("Main Menu:");
 		System.out.println("  1 - Add a room");
 		System.out.println("  2 - Remove a room");
@@ -83,7 +75,8 @@ public class RoomScheduler {
 		System.out.println("  6 - Get Json");
 		System.out.println("  7 - Exit");
 		System.out.println("Enter your selection: ");
-		count = 0;
+		int count = 0;
+		//verifying if a user enters proper input
 		while(!keyboard.hasNextInt()){
 			if(count >= 3) {
 				System.out.println("Too many attempts!");
@@ -95,12 +88,15 @@ public class RoomScheduler {
 		}
 		return keyboard.nextInt();
 	}
-
-	protected static String addRoom(ArrayList<Room> roomList) {
+	/**
+	*Returns with a room name that has been added.
+	*@param roomList name or names of the room.
+	*/
+	public static String addRoom(ArrayList<Room> roomList) {
 		System.out.println("Add a room:");
 		String name = getRoomName();
 		System.out.println("Room capacity?");
-		count  = 0;
+		int count  = 0;
 		while(!keyboard.hasNextInt()){
 			if(count > 3) {
 				System.out.println("You tried too many times now!");
@@ -117,15 +113,21 @@ public class RoomScheduler {
 
 		return "Room '" + newRoom.getName() + "' added successfully!";
 	}
-
-	protected static String removeRoom(ArrayList<Room> roomList) {
+	/**
+	*removes the room based on the correct input.
+	*@param roomList enter the room to be removed.
+	*/
+	public static String removeRoom(ArrayList<Room> roomList) {
 		System.out.println("Remove a room:");
 		roomList.remove(findRoomIndex(roomList, getRoomName()));
 		
 		return "Room removed successfully!";
 	}
-
-	protected static String listRooms(ArrayList<Room> roomList) {
+	/**
+	*displays the list of rooms and their capacity.
+	*returns the number of room/rooms.
+	*/
+	public static String listRooms(ArrayList<Room> roomList) {
 		System.out.println("Room Name - Capacity");
 		System.out.println("---------------------");
 
@@ -137,7 +139,11 @@ public class RoomScheduler {
 
 		return roomList.size() + " Room(s)";
 	}
-
+	/**
+	*schedules the respective room
+	*based on date and time which the user inputs
+	*returns with a message stating scheduled successfully
+	*/
 	protected static String scheduleRoom(ArrayList<Room> roomList) {
 		System.out.println("Schedule a room:");
 		String name = getRoomName();
@@ -163,11 +169,11 @@ public class RoomScheduler {
 		//System.out.println(startTimestamp);
 		endTimestamp = Timestamp.valueOf(endDate + " " + endTime);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		System.out.println("Subject?");
-		String subject = keyboard.next();
+		String subject = keyboard.nextLine();
 
 		Room curRoom = getRoomFromName(roomList, name);
 
@@ -177,12 +183,12 @@ public class RoomScheduler {
 
 		return "Successfully scheduled meeting!";
 	}
-
-	protected static Room getRoomFromName(ArrayList<Room> roomList, String name) {
+	
+	public static Room getRoomFromName(ArrayList<Room> roomList, String name) {
 		return roomList.get(findRoomIndex(roomList, name));
 	}
 
-	protected static int findRoomIndex(ArrayList<Room> roomList, String roomName) {
+	public static int findRoomIndex(ArrayList<Room> roomList, String roomName) {
 		int roomIndex = 0;
 
 		for (Room room : roomList) {
@@ -194,8 +200,12 @@ public class RoomScheduler {
 
 		return roomIndex;
 	}
-
-	protected static String getRoomName() {
+	/**
+	*accepts the room name
+	*checks if it contains any integers
+	*and asks to reneter room name
+	*/
+	public static String getRoomName() {
 		System.out.println("Room Name?");       
 		while(keyboard.hasNextInt()) {
 			System.out.println("Enter correct room name...");
@@ -203,17 +213,23 @@ public class RoomScheduler {
 		}
 		return keyboard.next();
 	}
-	
-	public static void getDataFromRoomScheduler(ArrayList<Room> roomList) {
+	/**
+	*stores the data in the file named sample.json
+	*even prints the data to the console.
+	*/
+	public static void getDataFromRoomScheduler(ArrayList<Room> roomList) throws IOException {
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(roomList);
+		FileWriter writer = null;
 		try {
-			FileWriter writer = new FileWriter("sample.json");
+			//to write the data into sample.json
+			writer = new FileWriter("sample.json");
 			writer.write(json);
-			writer.close();
 			System.out.println("File exported"+json);
-		} catch(IOException e) {
-			e.printStackTrace();
+		} catch(Exception e) {
+			throw new IOException(e);
+		} finally {
+			writer.close();
 		}
 	}
 	
