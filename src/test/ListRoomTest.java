@@ -17,7 +17,7 @@ public class ListRoomTest {
 	
 	@Test
 	public void listRoomTest() {
-		Room r = new Room("Dn", 5);
+		Room r = new Room("Dn", 4);
 		rooms.add(r);
 		//rs.addRoom(rooms);
 		/**
@@ -25,6 +25,6 @@ public class ListRoomTest {
 		 * @param room list
 		 */
 		rs.listRooms(rooms);
-		assertEquals(rooms.size(), 0);
+		assertEquals(rooms.size(), 1);
 	}
 }

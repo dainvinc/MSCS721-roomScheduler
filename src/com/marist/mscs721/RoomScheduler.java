@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class RoomScheduler {
+	protected static final Logger logger = Logger.getLogger(RoomScheduler.class.getName());
 	protected static final Scanner keyboard = new Scanner(System.in);
 	
 	public static void main(String[] args) throws IOException {
@@ -79,10 +80,10 @@ public class RoomScheduler {
 		//verifying if a user enters proper input
 		while(!keyboard.hasNextInt()){
 			if(count >= 3) {
-				System.out.println("Too many attempts!");
+				logger.info("Too many attempts!");
 				return 0;
 			}
-			System.out.println("You entered a String! Try again...");
+			logger.warning("You entered a String! Try again...");
 			keyboard.next();
 			count++;
 		}
@@ -99,10 +100,10 @@ public class RoomScheduler {
 		int count  = 0;
 		while(!keyboard.hasNextInt()){
 			if(count > 3) {
-				System.out.println("You tried too many times now!");
+				logger.info("You tried too many times now!");
 				return "";
 			}
-			System.out.println("Invalid input! Try again.");
+			logger.warning("Invalid input! Try again.");
 			keyboard.next();
 			count++;
 		}
@@ -225,7 +226,7 @@ public class RoomScheduler {
 			//to write the data into sample.json
 			writer = new FileWriter("sample.json");
 			writer.write(json);
-			System.out.println("File exported"+json);
+			logger.info("File exported"+json);
 		} catch(Exception e) {
 			throw new IOException(e);
 		} finally {
