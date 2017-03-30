@@ -130,6 +130,10 @@ public class RoomScheduler {
 			count++;
 		}
 		int capacity = keyboard.nextInt();
+		while(capacity < 0) {
+			System.out.println("Please enter valid input.");
+			capacity = keyboard.nextInt();
+		}
 
 		Room newRoom = new Room(name, capacity);
 		roomList.add(newRoom);
