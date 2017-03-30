@@ -233,12 +233,13 @@ public class RoomScheduler {
 	*and asks to reneter room name
 	*/
 	public static String getRoomName() {
-		System.out.println("Room Name?");       
+		System.out.println("Room Name?");   
+		keyboard.nextLine();
 		while(keyboard.hasNextInt()) {
 			System.out.println("Enter correct room name...");
 			keyboard.next();
 		}
-		return keyboard.next();
+		return keyboard.nextLine();
 	}
 	/**
 	*stores the data in the file named sample.json
