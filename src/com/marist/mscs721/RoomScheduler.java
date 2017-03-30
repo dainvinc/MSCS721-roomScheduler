@@ -106,18 +106,8 @@ public class RoomScheduler {
 	public static String addRoom(ArrayList<Room> roomList) {
 		System.out.println("Add a room:");
 		String name = getRoomName();
+		compareRoomName(roomList, name);
 		
-		for(Room room : roomList) {
-			if(room.getName().equals(name)) {
-				System.out.println("WARNING! Room Names are matching.");
-				System.out.println("Continue? (y/n): ");
-				String s1 = keyboard.next();
-				if(s1.equals("y"))
-					continue;
-				else if(s1.equals("n"))
-					name = getRoomName();
-			}
-		}
 		System.out.println("Room capacity?");
 		int count  = 0;
 		while(!keyboard.hasNextInt()){
@@ -150,6 +140,21 @@ public class RoomScheduler {
 		
 		return "Room removed successfully!";
 	}
+	
+	public static String compareRoomName(ArrayList<Room> roomList, String newRoomName) {
+		for(Room room : roomList) {
+			while(room.getName().equals(newRoomName)) {
+				System.out.println("WARNING! Room Names are matching.");
+				System.out.println("Continue? (y/n): ");
+				String s1 = keyboard.next();
+				if(s1.equals("y"))
+					break;
+				else if(s1.equals("n"))
+					newRoomName = getRoomName();
+			}
+		}
+		return newRoomName;
+	}
 	/**
 	*displays the list of rooms and their capacity.
 	*returns the number of room/rooms.
@@ -174,6 +179,7 @@ public class RoomScheduler {
 	protected static String scheduleRoom(ArrayList<Room> roomList) {
 		System.out.println("Schedule a room:");
 		String name = getRoomName();
+		compareRoomName(roomList, name);
 		boolean timeFlag = false; 
 		System.out.println("Start Date? (yyyy-mm-dd):");
 		String startDate = keyboard.next();
