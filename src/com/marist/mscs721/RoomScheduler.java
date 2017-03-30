@@ -174,33 +174,41 @@ public class RoomScheduler {
 	protected static String scheduleRoom(ArrayList<Room> roomList) {
 		System.out.println("Schedule a room:");
 		String name = getRoomName();
-
+		boolean timeFlag = false; 
 		System.out.println("Start Date? (yyyy-mm-dd):");
 		String startDate = keyboard.next();
 		System.out.println(startDate);
-		System.out.println("Start Time?");
+		System.out.println("Start Time? (hh:mm)");
 		String startTime = keyboard.next();
 		startTime = startTime + ":00.0";
 		System.out.println(startTime);
 
 		System.out.println("End Date? (yyyy-mm-dd):");
 		String endDate = keyboard.next();
-		System.out.println("End Time?");
+		System.out.println("End Time? (hh:mm)");
 		String endTime = keyboard.next();
 		endTime = endTime + ":00.0";
 		System.out.println(endTime);
 		Timestamp startTimestamp = null;
 		Timestamp endTimestamp = null;
-		try{
-		startTimestamp = Timestamp.valueOf(startDate + " " + startTime);
-		//System.out.println(startTimestamp);
-		endTimestamp = Timestamp.valueOf(endDate + " " + endTime);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+		try {
+			startTimestamp = Timestamp.valueOf(startDate + " " + startTime);
+			System.out.println(startTimestamp);
+			endTimestamp = Timestamp.valueOf(endDate + " " + endTime);
+			System.out.println(endTimestamp);
+		} catch(IllegalArgumentException i) {
+			System.out.println("Wrong timestamp! Try again.");
+			scheduleRoom(roomList);
 		}
-
+		if(startTimestamp.before(endTimestamp)) {
+			System.out.println("The time you entered: " +startTimestamp +"  "+endTimestamp);
+		} else {
+			System.out.println("Invalid date! Try again...");
+			scheduleRoom(roomList);
+		}
 		System.out.println("Subject?");
-		String subject = keyboard.next();
+		keyboard.nextLine();
+		String subject = keyboard.nextLine();
 
 		Room curRoom = getRoomFromName(roomList, name);
 
