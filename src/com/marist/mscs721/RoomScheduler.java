@@ -2,21 +2,31 @@ package com.marist.mscs721;
 
 
 import java.io.FileWriter;
-import org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.SimpleLayout;
+
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class RoomScheduler {
-	protected static final Logger logger = Logger.getLogger(RoomScheduler.class.getName());
+	private static final Logger logger = Logger.getLogger(RoomScheduler.class.getName());
 	protected static final Scanner keyboard = new Scanner(System.in);
 	
 	public static void main(String[] args) throws IOException {
+		PropertyConfigurator.configure("log4j.properties");
+//		BasicConfigurator.configure();
+		logger.setLevel(Level.INFO);
+		logger.trace("Program trace started!");
 		Boolean end = false;		
 		ArrayList<Room> rooms = new ArrayList<Room>();
 
@@ -83,7 +93,7 @@ public class RoomScheduler {
 				logger.info("Too many attempts!");
 				return 0;
 			}
-			logger.warning("You entered a String! Try again...");
+			logger.debug("You entered a String! Try again...");
 			keyboard.next();
 			count++;
 		}
@@ -96,14 +106,26 @@ public class RoomScheduler {
 	public static String addRoom(ArrayList<Room> roomList) {
 		System.out.println("Add a room:");
 		String name = getRoomName();
+		
+		for(Room room : roomList) {
+			if(room.getName().equals(name)) {
+				System.out.println("WARNING! Room Names are matching.");
+				System.out.println("Continue? (y/n): ");
+				String s1 = keyboard.next();
+				if(s1.equals("y"))
+					continue;
+				else if(s1.equals("n"))
+					name = getRoomName();
+			}
+		}
 		System.out.println("Room capacity?");
 		int count  = 0;
 		while(!keyboard.hasNextInt()){
 			if(count > 3) {
-				logger.info("You tried too many times now!");
+				logger.error("You tried too many times now!");
 				return "";
 			}
-			logger.warning("Invalid input! Try again.");
+			logger.error("Invalid input! Try again.");
 			keyboard.next();
 			count++;
 		}
@@ -174,7 +196,7 @@ public class RoomScheduler {
 		}
 
 		System.out.println("Subject?");
-		String subject = keyboard.nextLine();
+		String subject = keyboard.next();
 
 		Room curRoom = getRoomFromName(roomList, name);
 

@@ -1,0 +1,8 @@
+test\MeetingTest.class
+test\FindRoomIndexTest.class
+test\ListRoomTest.class
+test\JUnitTestSuite.class
+test\RemoveRoomTest.class
+test\ScheduleRoomTest.class
+test\RoomTest.class
+test\AddRoomTest.class
