@@ -7,12 +7,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.SimpleLayout;
-
-
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import com.google.gson.Gson;
@@ -24,7 +20,7 @@ public class RoomScheduler {
 	
 	public static void main(String[] args) throws IOException {
 		PropertyConfigurator.configure("log4j.properties");
-//		BasicConfigurator.configure();
+		BasicConfigurator.configure();
 		logger.setLevel(Level.INFO);
 		logger.trace("Program trace started!");
 		Boolean end = false;		

@@ -1,8 +1,9 @@
 test\MeetingTest.class
+test\JUnitTestSuite.class
+test\ScheduleRoomTest.class
 test\FindRoomIndexTest.class
 test\ListRoomTest.class
-test\JUnitTestSuite.class
 test\RemoveRoomTest.class
-test\ScheduleRoomTest.class
+test\NewScheduleMeeting.class
 test\RoomTest.class
 test\AddRoomTest.class
