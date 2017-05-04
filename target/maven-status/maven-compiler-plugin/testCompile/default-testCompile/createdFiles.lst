@@ -1,0 +1,12 @@
+com\marist\mscs721\RoomScheduler.class
+test\MeetingTest.class
+test\JUnitTestSuite.class
+test\ScheduleRoomTest.class
+com\marist\mscs721\Room.class
+com\marist\mscs721\Meeting.class
+test\FindRoomIndexTest.class
+test\ListRoomTest.class
+test\RemoveRoomTest.class
+test\NewScheduleMeeting.class
+test\RoomTest.class
+test\AddRoomTest.class

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: visha
+Class-Path: dependency-jars/gson-2.6.2.jar dependency-jars/junit-4.12.
+ jar dependency-jars/hamcrest-core-1.3.jar dependency-jars/log4j-1.2.1
+ 7.jar
+Build-Jdk: 1.8.0_121
+Created-By: Maven Integration for Eclipse
+Main-Class: com.marist.mscs721.RoomScheduler
+
