@@ -2,12 +2,12 @@
 *****************************************************
 Summary
 -------
-Generated at: 2017-05-04T00:59:52-04:00
+Generated at: 2017-05-04T01:15:29-04:00
 
-Notes: 2
+Notes: 0
 Binaries: 3
 Archives: 0
-Standards: 20
+Standards: 16
 
 Apache Licensed: 0
 Generated Documents: 0
@@ -15,23 +15,19 @@ Generated Documents: 0
 JavaDocs are generated, thus a license header is optional.
 Generated files do not require license headers.
 
-19 Unknown Licenses
+15 Unknown Licenses
 
 *****************************************************
 
 Files with unapproved licenses:
 
   .codepro/deadCodeEntryPoints.xml
-  .eclipse-pmd
   .sonar/.sonar_lock
   .sonar/report-task.txt
   pom.xml
-  src/com/marist/mscs721/java.hprof.txt
   src/com/marist/mscs721/Meeting.java
-  src/com/marist/mscs721/package-info.java
   src/com/marist/mscs721/Room.java
   src/com/marist/mscs721/RoomScheduler.java
-  src/com/marist/mscs721/Thread Group2.jmx
   src/test/AddRoomTest.java
   src/test/FindRoomIndexTest.java
   src/test/JUnitTestSuite.java
@@ -50,21 +46,15 @@ Files with unapproved licenses:
   Compressed archives will be marked A
   Notices, licenses etc. will be marked N
  !????? .codepro/deadCodeEntryPoints.xml
- !????? .eclipse-pmd
  !????? .sonar/.sonar_lock
  !????? .sonar/report-task.txt
-  N     LICENSE.txt
  !YASL1 pom.xml
-  N     README.txt
- !????? src/com/marist/mscs721/java.hprof.txt
   B     src/com/marist/mscs721/Meeting.class
  !????? src/com/marist/mscs721/Meeting.java
- !????? src/com/marist/mscs721/package-info.java
   B     src/com/marist/mscs721/Room.class
  !????? src/com/marist/mscs721/Room.java
   B     src/com/marist/mscs721/RoomScheduler.class
  !????? src/com/marist/mscs721/RoomScheduler.java
- !????? src/com/marist/mscs721/Thread Group2.jmx
  !????? src/test/AddRoomTest.java
  !????? src/test/FindRoomIndexTest.java
  !????? src/test/JUnitTestSuite.java
@@ -96,14 +86,6 @@ Files with unapproved licenses:
 </entry-points>
 
 =====================================================
-== File: .eclipse-pmd
-=====================================================
-<?xml version="1.0" encoding="UTF-8"?>
-<eclipse-pmd xmlns="http://acanda.ch/eclipse-pmd/0.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://acanda.ch/eclipse-pmd/0.8 http://acanda.ch/eclipse-pmd/eclipse-pmd-0.8.xsd">
-  <analysis enabled="true" />
-</eclipse-pmd>
-
-=====================================================
 == File: .sonar/.sonar_lock
 =====================================================
 
@@ -115,60 +97,6 @@ serverUrl=http://localhost:9000
 dashboardUrl=http://localhost:9000/dashboard/index/RoomScheduler
 ceTaskId=AVomr7P3DCb31i4LyR22
 ceTaskUrl=http://localhost:9000/api/ce/task?id=AVomr7P3DCb31i4LyR22
-
-=====================================================
-== File: src/com/marist/mscs721/java.hprof.txt
-=====================================================
-JAVA PROFILE 1.0.1, created Wed Apr 26 23:47:04 2017
-
-Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
-
-  - Neither the name of Oracle nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-Header for -agentlib:hprof (or -Xrunhprof) ASCII Output (JDK 5.0 JVMTI based)
-
-WARNING!  This file format is under development, and is subject to
-change without notice.
-
-This file contains the following types of records:
-
-THREAD START
-THREAD END      mark the lifetime of Java threads
-
-TRACE           represents a Java stack trace.  Each trace consists
-                of a series of stack frames.  Other records refer to
-                TRACEs to identify (1) where object allocations have
-                taken place, (2) the frames in which GC roots were
-                found, and (3) frequently executed methods.
-
-HEAP DUMP       is a complete snapshot of all live objects in the Java
-                heap.  Following distinctions are made:
 
 =====================================================
 == File: src/com/marist/mscs721/Meeting.java
@@ -223,15 +151,6 @@ public class Meeting {
 		this.subject = subject;
 	}
 
-
-=====================================================
-== File: src/com/marist/mscs721/package-info.java
-=====================================================
-/**
- * @author michael.gildein1@marist.edu
- *
- */
-package com.marist.mscs721;
 
 =====================================================
 == File: src/com/marist/mscs721/Room.java
@@ -340,60 +259,6 @@ public class RoomScheduler {
 			case 6: 
 				getDataFromRoomScheduler(rooms);
 				break;
-
-=====================================================
-== File: src/com/marist/mscs721/Thread Group2.jmx
-=====================================================
-<?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
-  <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
-      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
-      </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
-    </TestPlan>
-    <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">25</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <longProp name="ThreadGroup.start_time">1493610245000</longProp>
-        <longProp name="ThreadGroup.end_time">1493610245000</longProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-      </ThreadGroup>
-      <hashTree>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java Request" enabled="true">
-          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="Sleep_Time" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Time</stringProp>
-                <stringProp name="Argument.value">100</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Sleep_Mask" elementType="Argument">
-                <stringProp name="Argument.name">Sleep_Mask</stringProp>
-                <stringProp name="Argument.value">0xFF</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="Label" elementType="Argument">
-                <stringProp name="Argument.name">Label</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ResponseCode" elementType="Argument">
-                <stringProp name="Argument.name">ResponseCode</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
 
 =====================================================
 == File: src/test/AddRoomTest.java
